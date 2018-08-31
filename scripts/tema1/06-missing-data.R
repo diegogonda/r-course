@@ -17,8 +17,11 @@ data.cleaned.2 <- data[complete.cases(data), ]
 data$Income[data$Income == 0] <- NA
 
 #Medidas de centralización y dispersión
+# #d mean es el promedio
+# #d na.rm elimina los datos con NA para poder realizar el cálculo
 mean(data$Income)
 mean(data$Income, na.rm = TRUE)
 
+# #d sd es la desviacion típica
 sd(data$Income)
 sd(data$Income, na.rm = TRUE)
