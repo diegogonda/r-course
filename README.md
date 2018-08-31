@@ -1,3 +1,8 @@
+# NOTAS
+Se trata de un fork del proyecto principal del curso de R data science para hacer anotaciones personales sobre el código.
+A modo de diferenciar el código original del nuevo, se tomarán las siguientes notaciones:
+- Los comentarios comenzarán con el tag #d
+
 # Curso completo de análisis de datos con R: de cero a experto con JB
 Apúntate al curso completo desde aquí mismo - https://www.udemy.com/r-data-science/?couponCode=GIT_JB
 
