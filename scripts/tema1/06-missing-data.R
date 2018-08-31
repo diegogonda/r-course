@@ -10,6 +10,7 @@ is.na(data$Income)
 #Limpiar NA de solamente la variable Income
 data.income.cleaned <- data[!is.na(data$Income),]
 #Filas completas para un data frame
+# #d complete.cases devuelve un array booleano en el que indica qué filas de la tabla están completas de forma que, al escribir data[complete.cases(data)] obtener un dataset limpio de NA
 complete.cases(data)
 data.cleaned.2 <- data[complete.cases(data), ]
 #Convertir los ceros de ingresos en NA
