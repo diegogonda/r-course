@@ -42,6 +42,8 @@ random.impute.data.frame <- function(dataframe, cols){
 
 
 data <- read.csv("../data/tema1/missing-data.csv", na.strings = "")
+# #d Aquellos que tengan 0, le ponemos un NA para imputar valores aleatorios también a ellos
 data$Income[data$Income==0]<-NA
+# #d modificamos las columnas que nos parecen importantes
 data <- random.impute.data.frame(data, c(1,2))
 
