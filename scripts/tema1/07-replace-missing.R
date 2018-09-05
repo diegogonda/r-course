@@ -21,7 +21,9 @@ rand.impute <- function(x) {
   #por defecto, devolveré lo mismo que había entrado por parámetro
   imputed <- x
   #en los valores que faltaban, los reemplazamos por una muestra
-  #de los que si conocemos (MAS)
+  #de los que si conocemos (MAS) 
+  # #d MAS: Muestra Aleatoria Simple
+  # #d con el código anterior hemos sustituido los valores NA por muestras que si conocemos de forma aleatoria
   imputed[missing] <- sample(x.obs, n.missing, replace = TRUE)
   return (imputed)
 }
@@ -30,9 +32,11 @@ rand.impute <- function(x) {
 random.impute.data.frame <- function(dataframe, cols){
   names <- names(dataframe)
   for(col in cols){
+    # #d concatena el nombre de la columna original con imputed
     name <- paste(names[col], "imputed", sep = ".")
     dataframe[name] = rand.impute(dataframe[,col])
   }
+  # #d no necesitamos el return para recuperar los valores
   dataframe
 }
 
