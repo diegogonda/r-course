@@ -1,9 +1,14 @@
 data <- read.csv("../data/tema1/missing-data.csv", na.strings = "")
+
+# #d A los valores que faltan se les asigna el promedio de la variable income
 data$Income.mean <- ifelse(is.na(data$Income), 
                            mean(data$Income, na.rm = TRUE),
                            data$Income
                            )
-
+# #d OJO! porque este tipo de asignación de valor a los NA no vale para todos los casos. Existen casos de variables categóricas en los
+# #d que tenemos que utilizar otras estrategias
+# #d Para este tipo de casos, en Big Data extraeremos valores aleatorios de una muestra aleatoria entre los valores que NO faltan
+# #d Esto lo haremos con la funcion rand.impute
 
 #x es un vector de datos que puede contener NA
 rand.impute <- function(x) {
