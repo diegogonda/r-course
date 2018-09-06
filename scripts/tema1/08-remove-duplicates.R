@@ -5,8 +5,10 @@ family.car = c("Lujo", "Compacto", "Utilitario", "Lujo",
 
 family <- data.frame(family.salary, family.size, family.car)
 
+# #d elimina las filas que estén duplicadas todas las columnas
 family.unique <- unique(family)
+# #d duplicated devuelve un vector de T/F indicando si una fila está duplicada (en el caso de la primera ocurrencia indica FALSE, y las subsiguientes indica TRUE)
+family.duplicated <- duplicated(family)
 
-duplicated(family)
-
+# #d obtener los datos de las filas duplicadas
 family[duplicated(family),]
