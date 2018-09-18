@@ -30,9 +30,12 @@ install.packages("dummies")
 library(dummies)
 
 # #d vamos a trabajar con regresion lineal o 
+# #d reproducimos variables categorícas como numéricas
 students.dummy <- dummy.data.frame(students, sep = ".")
 names(students.dummy)
 
+# #d dummy de sólo una de las variables
 dummy(students$State, sep=".")
 
+# #d crear variables dummy para las especificadas: names
 dummy.data.frame(students, names = c("State", "Gender"), sep = ".")
