@@ -1,17 +1,23 @@
 housing.data <- read.csv("../data/tema1/housing-with-missing-value.csv",
                          header = TRUE, stringsAsFactors = FALSE)
 
-
+# #d resumen de las variables, que nos aporta para cada una de las variables de sus estadisticas más básicas
+# #d mínimos, máximos, promedios, otros ...
 summary(housing.data)
 
+# #d vemos tres formas básicas de eliminar los NAs
+
+# #d ya cnocido, na.omit (opción más radical)
 ##ELiminar todas las observaciones que contengan algún NA
 housing.data.1 <- na.omit(housing.data)
+# #d podemos ver los cambios entre este sumary y el anterior
 summary(housing.data.1)
 
 ##Eliminar las NAs de ciertas columnas
+# #d indicamos las variables que queremos eliminar en drop_na
 drop_na <- c("rad")
 housing.data.2 <- housing.data[ 
-  complete.cases(housing.data[,!(names(housing.data))%in% drop_na]),]
+  complete.cases(housing.data[,!(names(housing.data))%in% drop_na]),] # #d finalmente sacamos las que no se encuentran en drop_na (!names....)
 
 summary(housing.data.2)
 
