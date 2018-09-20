@@ -25,17 +25,21 @@ summary(housing.data.2)
 housing.data$rad <- NULL
 summary(housing.data)
 
+# #d eliminar varias columnas
 drops <- c("rad", "ptratio")
 housing.data.3 <- housing.data[,!(names(housing.data) %in% drops)]
 summary(housing.data.3)
 
-
+# #d formas completar la información que falta
 install.packages("Hmisc")
 library(Hmisc)
 
 housing.data.copy1 <- housing.data
-housing.data.copy1$ptratio <- impute(housing.data.copy1$ptratio, mean)
+# #d impute https://www.rdocumentation.org/packages/Hmisc/versions/4.1-1/topics/impute
+# #d cambia NAs con valores constantes (fijo, media, mediana, etc. El que consideremos) 
+housing.data.copy1$ptratio <- impute(housing.data.copy1$ptratio, mean) # #d media
 housing.data.copy1$rad <- impute(housing.data.copy1$rad, mean)
+# #d al hacer el summary ptratio y rad no tienen NAs
 summary(housing.data.copy1)
 
 housing.data.copy2 <- housing.data
