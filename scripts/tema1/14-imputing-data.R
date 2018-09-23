@@ -20,9 +20,7 @@ columns <- c("ptratio", "rad")
 # #d seed: semilla, evita que el modelo sea aleatorio (??? revisar)
 
 # #d con esta funcion, a través de los cálculos se intenta inferir el valor probabilístico de las variables con NA
-# #d para ello, tenemos dos etapas
-# #d 1) mice, construimos un modelo de datos para intentar obtener valores 
-# #d 2) 
+# #d para ello, con mice, construimos un modelo de datos para intentar obtener valores 
 imputed_data <- mice(housing.data[,names(housing.data) %in% columns],
                      m = 5, 
                      maxit = 50, 
@@ -35,18 +33,22 @@ imputed_data <- mice(housing.data[,names(housing.data) %in% columns],
 
 summary(imputed_data)
 
-
+# #d complete es de mice pero existe en otra clase, por lo que tenemos que indicarle el paquete (mice::)
+# #d complete generamos las dos variables completas con los valores predecidas por el modelo de datos
 complete.data <- mice::complete(imputed_data)
 
+# #d asingamos los valores predecidos a los originales (ptratio y rad)
 housing.data$ptratio <- complete.data$ptratio
 housing.data$rad <- complete.data$rad
 
+# #d anyNA: localiza los NAs que tiene un dataframe
 anyNA(housing.data)
 
-
-
+# #d aregImpute nos permite hacer inferencia de datos usando regresiones aditivas, técnicas de boostraping, o usando la comparación de medias predictivas
+# #d el método identifica el tipo de dato
 impute_arg <- aregImpute(~ptratio + rad, data = housing.data, n.impute = 5)
 
+# #d devuelve un valor entre 0 y 1, que nos indica la calidad del cálculo 
 impute_arg
 
 impute_arg$imputed$rad
