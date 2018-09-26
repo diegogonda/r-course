@@ -1,19 +1,28 @@
+# #d https://www.udemy.com/r-data-science/learn/v4/t/lecture/8945178?start=0
+# #d vamos a hacer resúmenes
+
 data <- read.csv("../data/tema2/auto-mpg.csv", 
                  header = TRUE,
                  stringsAsFactors = FALSE)
 
+# #d la variable cylinders nos interesa que sea categórica 
+# #d por lo que indicamos los valores numéricos y las categorias que vamos a asociar
 data$cylinders <- factor(data$cylinders, 
                          levels = c(3,4,5,6,8),
                          labels = c("3cil", "4cil", "5cil", "6cil", "8cil"))
 
-
+# #d obtenemos el resumen (viene del tema anterior)
 summary(data)
 
+# #d la funcion str (structure) no da la información de como R ha generado internamente el objeto
 str(data)
 
-
+# #d aplicamos la funcion summary de una forma más detallada 
+# #d devolviendo una tabla de frecuencias absolutas (cuántas veces aparece cada una de ellas)
 summary(data$cylinders)
+# #d información detallada de mpg
 summary(data$mpg)
+# #d structura de los cilindros
 str(data$cylinders)
 
 
