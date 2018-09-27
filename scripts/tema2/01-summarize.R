@@ -27,22 +27,42 @@ str(data$cylinders)
 
 
 install.packages(c("modeest", "raster", "moments"))
-library(modeest) #moda
+# #d La moda es de todos los elementos el mas comu
+library(modeest) #moda 
+# #d paquete para sacar los cuantiles y el coeficiente de variabilidad
 library(raster) #quantiles, cv
+# #d calcular el coeficitent de asimetría y el de curtosis
 library(moments) # asimetría, curtosis
 
 
 X = data$mpg
 
+# #d sobre el mínuto 3 del video https://www.udemy.com/r-data-science/learn/v4/t/lecture/8945776?start=228
+# #d hay una gráfica
+
 #### Medidas de Centralización
-mean(X) #sum(X)/length(X)
+
+# #d nos indican como de centrados están los datos.
+# #d media: suma de las variables entre las cantidad de ellas
+mean(X) #sum(X)/length(X) 
+# #d mediana: si ordenaramos todos los datos del array, el más pequeño primero el mayo el último, sería el, o los, que están en el medio
 median(X)
+# #d moda: El valor que más aparece
+# #d mfv: most frecuent value
 mfv(X)
+# #d quartil: es un percentil del 25 y del 75
 quantile(X)
 
-#### Medidas de Dispersión
+
+#### Medidas de Dispersióno s
+
+# #d evaluamos si los casos están muy dispersos o muy concentrados.
+# #d varianza: Como los valores se desplazan de la media 
 var(X)
+# #d desviación típica: la raíz cuadrada de la varianza
+# #d para los casos en que la dimensión (el cuadrado de la varianza) no tiene sentido, aplicamos la desviación
 sd(X)
+# #d coefición de variación: mide la variabilidad relativa entre la media y la desviación media
 cv(X) #sd(X)/mean(X)
 
 #### Medidas de asimetría
