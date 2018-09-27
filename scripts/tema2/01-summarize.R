@@ -66,7 +66,11 @@ sd(X)
 cv(X) #sd(X)/mean(X)
 
 #### Medidas de asimetría
+# #d momento do orden r respecto de la media
+# #d es sumar las diferencias entre cada uno de los elementos de la muestra y la media elevado a r
+# #d cuando más cercana a cero, mayor simetria
 skewness(X)
+# #d 
 moments::kurtosis(X)
 
 par(mfrow = c(1,1))
