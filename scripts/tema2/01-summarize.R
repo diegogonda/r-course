@@ -60,10 +60,11 @@ quantile(X)
 # #d varianza: Como los valores se desplazan de la media 
 var(X)
 # #d desviación típica: la raíz cuadrada de la varianza
-# #d para los casos en que la dimensión (el cuadrado de la varianza) no tiene sentido, aplicamos la desviación
+# #d para los casos en que la dimensión (el cuadrado de la varianza) no tiene sentido (ya que ésta introduce una nueva dimensión), aplicamos la desviación
 sd(X)
-# #d coefición de variación: mide la variabilidad relativa entre la media y la desviación media
+# #d coefición de variación: mide la variabilidad relativa entre la media y la desviación media (x100 porque es un porcentaje)
 cv(X) #sd(X)/mean(X)
+
 
 #### Medidas de asimetría
 # #d momento do orden r respecto de la media
@@ -73,6 +74,6 @@ skewness(X)
 # #d 
 moments::kurtosis(X)
 
-par(mfrow = c(1,1))
-hist(X)
+par(mfrow = c(1,1)) # #d los devuelve al valor original
+hist(X) # #d muestra una gráfica de los datos
 
