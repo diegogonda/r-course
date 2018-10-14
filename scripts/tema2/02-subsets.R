@@ -45,5 +45,5 @@ data[1:5, !names(data) %in% c("No", "car_name")]
 # #d sacar los carname y mpg con mpg = 15 y 20
 data[data$mpg %in% c(15,20), c("car_name", "mpg")]
 
-
+# #d obtener aquellos que tiene el índice múltiplo de 5
 data[c(F,F,F,F,T), c(F, F, T)]
