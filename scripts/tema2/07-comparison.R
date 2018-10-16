@@ -1,45 +1,30 @@
-# #d realizar gráficos que comparen información
-# #d útil para cantidades grandes de datos
 data <- read.csv("../data/tema2/daily-bike-rentals.csv")
 
-# #d Trabajamos la estructura: Añadimos las categorías
-# #d damos nombre a las estaciones
-# #d levels: factores
-# #d labels: categorías
+# #d pasamos a variables categóricas
 data$season <- factor(data$season, levels = c(1,2,3,4), 
                       labels = c("Invierno", "Primavera", "Verano", "Otoño"))
-# #d lo mismo para los dias laborales y los que no
 data$workingday <- factor(data$workingday, levels = c(0,1),
                           labels = c("Festivo", "De trabajo"))
-# #d también el tiempo
 data$weathersit <- factor(data$weathersit, levels = c(1,2,3),
                           labels = c("Despejado", "Nublado", "Lluvia/Nieve ligera"))
-# #d formato de fecha
+# #d usamos el formato de fecha que sea más correcto
 data$dteday <- as.Date(data$dteday, format = "%Y-%m-%d")
-
-# #d recordatorio: con attach nos evitamos tener que usar data para acceder a la información
+# #d como ya sabemos, pasamos las variables internas de data a variables de R
 attach(data)
 
-# #d Análisis del alquiler de bicicletas según la estación del año
-# #d 2 filas, 2 columnas
-# #d generamos un dataframe por cada estación
-# #d $cnt: para quedarnos solo con la columna del conteo
+# #d generamos un diagrama de dos filas y dos columnas
 par(mfrow=c(2,2))
+# #d obtenemos los datos de conteo (cnt) de cada estación
 winter <- subset(data, season == "Invierno")$cnt
 spring <- subset(data, season == "Primavera")$cnt
 summer <- subset(data, season == "Verano")$cnt
 fall   <- subset(data, season == "Otoño")$cnt
 
-# #d Pintamos el histograma
-# #d media: pintada de color rojo
-# #d mediana: de color azul
+# #d sacamos el histograma de cada estación con una linea vertical con la media (rojo) y la mediana (azul)
 hist(winter, prob = TRUE, xlab = "Alquiler diario en invierno", main ="")
-# #d curva de la densidad
 lines(density(winter))
-# #d param v: vertical
 abline(v = mean(winter), col = "red")
 abline(v=median(winter), col = "blue")
-
 
 
 hist(spring, prob = TRUE, xlab = "Alquiler diario en primavera", main = "")
@@ -59,19 +44,23 @@ lines(density(fall))
 abline(v = mean(fall), col="red")
 abline(v=median(fall), col="blue")
 
-# #d el paquete de beanplot: diagrama de la judia
-# #d se utiliza para mostrar las frecuencias en forma de histograma dentro del las gráficas 
+# #d diagramas de judias
 install.packages("beanplot")
 library(beanplot)
 
 par(mfrow=c(1,1))
-# #d Indicamos las variables según las cuales queremos hacer las segmentación
-# #d en azul: nos 
+# #d Azul: histograma de frecuencias, la función de densidad
+# #d Rojo: las frecuencias, es un rallado que, a mayor frecuencia, mayot ocurrencia
+# #d Amarillo: Igual que las rojas, pero que se salen de la funcion de densidad.
 beanplot(data$cnt ~ data$season, col = c("blue", "red", "yellow"))
 
 
-
 #causalidad
+# #d Explicar algún fenómeno
+# #d Se usan cuando sospechamos que algo puede pasar, y queremos corroborarlo
+# #d es decir, nos sirve para confirmar hipótesis
+# #d en par.setting indicamos que cada rectangulo tenga un color => rojo: despejado, amarillo: nublado y verde: lluvia/Nieve ligera
+# #d panel: añadir información adicional, por ejemplo la dispersión de los datos
 library(lattice)
 bwplot(cnt ~ weathersit, data = data, 
        layout = c(1,1), 
