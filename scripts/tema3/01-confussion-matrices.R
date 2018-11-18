@@ -4,7 +4,7 @@ cp <- read.csv("../data/tema3/college-perf.csv")
 # #d Le damos un orden los factores de forma que los niveles de orden sean Low, el primero y High el úlitmo
 # #d lo que hacemos es indicarle al dataframe es que Low está por debajo de Medium y éste de High
 # #d Perf: performance
-# #d Perd: predecido
+# #d Perd: predicho
 cp$Perf <- ordered(cp$Perf, 
                    levels = c("Low", "Medium", "High"))
 cp$Pred <- ordered(cp$Pred,
@@ -28,6 +28,7 @@ prop.table(table)
 # #d redondear la prop.table indicando que las filas sumen el 100 (table, 1) *100 | el 1 es para multiplicar las filas
 # #d que, al ser un porcentaje, se ve muy claramente qué probabilidad hay de que un estudiante saque 
 # #d determinada nota
+# #d con el 1, usamos las filas para calcular
 round(prop.table(table, 1)*100, 2)
 # #d con el 2, usamos las columnas para calcular
 round(prop.table(table, 2)*100, 2)
