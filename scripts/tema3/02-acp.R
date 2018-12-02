@@ -1,8 +1,10 @@
 # #d Video: Análisis de las componentes principales
+# #d URL: https://www.udemy.com/r-data-science/learn/v4/t/lecture/8961386?start=0
 # #d ACP: Análisis de Componentes principales
-# #d técnica para reducir la dimensionalidad, transformando los datos que tengan muchas dimensiones, aquellas que son esenciales por definir la estructura basica de los datos
-# #d con el objetivo de reemplazar un número de variables grande en uno menor con un número de menor de ella que no tengan relacióm
-# #d siempre sin perder datos ni información relevante
+# #d técnica para reducir la dimensionalidad, transformando los datos que tengan muchas dimensiones, 
+# #d aquellas que son esenciales por definir la estructura basica de los datos
+# #d con el objetivo de reemplazar un número de variables grande en uno menor con un número de menor
+# #d de ellas que no tengan relación siempre sin perder datos ni información relevante
 usarrests <- read.csv("../data/tema3/USArrests.csv", stringsAsFactors = F)
 # #d Cambiamos el identificador de la final, por un dato de la columna, en este caso los estados de EEUU
 rownames(usarrests) <- usarrests$X 
@@ -31,6 +33,7 @@ summary(acp)
 
 # #d pintmaos el acp, correctamente
 # #d REVISAR EL VÍDEO: MUY INTERESANTE
+# #d minuto: 
 biplot(acp, scale = 0)
 
 # #d extraer las PCX
