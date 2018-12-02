@@ -1,4 +1,5 @@
 # #d Video: Diagramas ROC
+# #d https://www.udemy.com/r-data-science/learn/v4/t/lecture/8962718?start=0
 # #d Nos da información sobre la fiabilidad de nuestra clasificación
 # #d No ayuda a determinar la probabilidad de tener exito o fracaso en el test que estemos llevando a cabo
 # #d es decir, conocer si estamos obteniendo falsos o ciertos positivos 
